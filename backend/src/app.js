@@ -35,6 +35,7 @@
 
 const express = require('express')
 const cors = require('cors')
+const { errors } = require('celebrate')
 const routes = require('./routes')
 
 const app = express()
@@ -42,6 +43,7 @@ const app = express()
 app.use(cors()) // em produção fazer obj com origin: 'http://meuapp.com' 
 app.use(express.json())
 app.use(routes) // ver arq routes
+app.use(errors()) // tratar erros de validação
 
-app.listen(3333)
+module.exports = app
 
